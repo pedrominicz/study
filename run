@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+trap clean 0 1 2 3 6
+
+clean() {
+  rm -f a.out
+}
+
+case "$1" in
+  *.c)  gcc -Wall "$1" && ./a.out;;
+  *)    echo "cannot run '$1'";;
+esac
